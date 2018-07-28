@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8953,        222]
+NotebookOptionsPosition[      8651,        209]
+NotebookOutlinePosition[      8999,        224]
+CellTagsIndexPosition[      8956,        221]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"textToPoints", "[", 
+    RowBox[{"text_", ",", "skip_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"img", "=", 
+       RowBox[{"Rasterize", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"text", ",", 
+           RowBox[{"FontFamily", "\[Rule]", "\"\<Lucida Handwriting\>\""}]}], 
+          "]"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "500"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"pts", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"#2", ",", 
+           RowBox[{"-", "#1"}]}], "}"}], "&"}], "@@@", 
+        RowBox[{"Position", "[", 
+         RowBox[{
+          RowBox[{"ImageData", "[", 
+           RowBox[{"EdgeDetect", "[", "img", "]"}], "]"}], ",", "1", ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"shortest", "=", 
+       RowBox[{"Last", "@", 
+        RowBox[{"FindShortestTour", "@", "pts"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"pts", "[", 
+        RowBox[{"[", "shortest", "]"}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ";;", "skip"}], "]"}], "]"}]}]}], "\[IndentingNewLine]",
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"points", " ", "=", " ", 
+    RowBox[{"textToPoints", "[", 
+     RowBox[{"\"\<Bezier\>\"", ",", "5"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pp", " ", "=", " ", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"points", ",", "3", ",", "2"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curves", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "t"}], ")"}], "^", "2"}], "*", 
+        RowBox[{"pp", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "1"}], "]"}], "]"}]}], "+", 
+       RowBox[{"2", "*", "t", "*", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "t"}], ")"}], "*", 
+        RowBox[{"pp", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "2"}], "]"}], "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"t", "^", "2"}], "*", 
+        RowBox[{"pp", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "3"}], "]"}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "@", "pp"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gPlot", "[", "i_", "]"}], ":=", 
+   RowBox[{"ParametricPlot", "[", 
+    RowBox[{
+     RowBox[{"curves", "[", 
+      RowBox[{"[", "i", "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "500"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "180"}], ",", 
+          RowBox[{"-", "20"}]}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plots", " ", "=", " ", 
+   RowBox[{"ParallelTable", "[", 
+    RowBox[{
+     RowBox[{"gPlot", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "@", "curves"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Show", "[", "plots", "]"}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"folded", " ", "=", " ", 
+     RowBox[{"FoldList", "[", 
+      RowBox[{"List", ",", "plots"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"frames", " ", "=", " ", 
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", 
+        RowBox[{"folded", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "@", "folded"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<39.BezierCurve.gif\>\"", ",", "frames", ",", " ", 
+      RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",",
+       " ", 
+      RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", 
+       RowBox[{"Join", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{".05", ",", 
+           RowBox[{
+            RowBox[{"Length", "@", "folded"}], "-", "1"}]}], "]"}], ",", 
+         RowBox[{"{", "3", "}"}]}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]",
+    "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.740217655811822*^9, 3.740217669081688*^9}, {
+   3.7402176994319277`*^9, 3.740217721881749*^9}, {3.740221390303996*^9, 
+   3.740221415044301*^9}, {3.7402214701443367`*^9, 3.740221564154001*^9}, {
+   3.740221611354223*^9, 3.740221672633956*^9}, {3.740221711474253*^9, 
+   3.740221788343893*^9}, {3.740222639283187*^9, 3.7402226602629905`*^9}, {
+   3.740223322158272*^9, 3.7402233832382655`*^9}, {3.7402237346623535`*^9, 
+   3.740223809560809*^9}, {3.7402239429618564`*^9, 3.7402240137921143`*^9}, {
+   3.7402240749461765`*^9, 3.740224168663722*^9}, {3.740226241220118*^9, 
+   3.740226276069857*^9}, {3.7402292001317267`*^9, 3.7402293471470504`*^9}, {
+   3.7402293981567497`*^9, 3.7402294560177526`*^9}, {3.740229503918131*^9, 
+   3.7402295228115234`*^9}, {3.7402295537277527`*^9, 
+   3.7402295711779966`*^9}, {3.7402296473020415`*^9, 
+   3.7402296862418785`*^9}, {3.7402297349818616`*^9, 3.74022978052206*^9}, {
+   3.740229844424224*^9, 3.7402298775455294`*^9}, {3.7402299370041704`*^9, 
+   3.740230097014795*^9}, {3.740230180664641*^9, 3.7402302117343054`*^9}, {
+   3.740230258584179*^9, 3.740230351104967*^9}, {3.740230391055291*^9, 
+   3.7402306787950554`*^9}, {3.7402307181049643`*^9, 
+   3.7402307239853044`*^9}, {3.74023144066827*^9, 3.7402314826547337`*^9}, {
+   3.740231549374572*^9, 3.74023161508014*^9}, {3.7402319246944094`*^9, 
+   3.7402319289487753`*^9}, {3.74023196612461*^9, 3.740231976424621*^9}, {
+   3.740232013258726*^9, 3.740232042866451*^9}, {3.7402320753030505`*^9, 
+   3.7402320793533916`*^9}, {3.740232123282942*^9, 3.7402323119122562`*^9}, {
+   3.7402323573122635`*^9, 3.7402324505123405`*^9}, {3.740232530963303*^9, 
+   3.740232531693928*^9}, {3.740232565093196*^9, 3.7402325841030006`*^9}, {
+   3.7402326242929416`*^9, 3.740232840878293*^9}, {3.740232879309432*^9, 
+   3.740232896359371*^9}, {3.7402330542981725`*^9, 3.740233056768096*^9}, {
+   3.7402331755686197`*^9, 3.740233177032155*^9}, {3.7402333535370145`*^9, 
+   3.7402335907866125`*^9}, {3.7402336217704754`*^9, 
+   3.7402338522002754`*^9}, {3.740233913695019*^9, 3.740233927670471*^9}, {
+   3.7402339706364565`*^9, 3.740234036656477*^9}, {3.7402340854060383`*^9, 
+   3.740234301017972*^9}, {3.740234370417637*^9, 3.7402344346559434`*^9}, {
+   3.7402371629859924`*^9, 3.740237165733838*^9}, {3.7402375219199753`*^9, 
+   3.7402375379417505`*^9}, {3.740238027343755*^9, 3.740238092458383*^9}, {
+   3.7402381291537647`*^9, 3.740238241383422*^9}, {3.7402382876286707`*^9, 
+   3.7402383089521055`*^9}, {3.7402383471521063`*^9, 
+   3.7402384635431175`*^9}, {3.7402385015668926`*^9, 
+   3.7402385030565004`*^9}, {3.74023857653998*^9, 3.740238576828602*^9}, {
+   3.7402387749121885`*^9, 3.740238780056101*^9}, 3.740238881877513*^9, {
+   3.74023938360625*^9, 3.7402393900556135`*^9}, {3.740239461195607*^9, 
+   3.740239469729351*^9}, {3.7402396303495884`*^9, 3.7402396806003366`*^9}, {
+   3.7402397112852545`*^9, 3.7402397239240007`*^9}, {3.740239837980174*^9, 
+   3.740239845875271*^9}, {3.740239987319674*^9, 
+   3.740239987750042*^9}},ExpressionUUID->"bcdfc9c5-1221-4e64-bdf9-\
+937a064019e6"]
+},
+WindowSize->{1376, 873},
+WindowMargins->{{Automatic, 49}, {29, Automatic}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 8089, 187, 409, "Input",ExpressionUUID->"bcdfc9c5-1221-4e64-bdf9-937a064019e6"]
+}
+]
+*)
+

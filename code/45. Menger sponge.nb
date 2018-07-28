@@ -1,0 +1,246 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9871,        238]
+NotebookOptionsPosition[      9568,        225]
+NotebookOutlinePosition[      9917,        240]
+CellTagsIndexPosition[      9874,        237]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MengerSponge", "[", "cubes_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "newcubes", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"c", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"newcuboid", " ", "=", " ", 
+             RowBox[{"cubes", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"length", " ", "=", " ", 
+             RowBox[{
+              RowBox[{"N", "@", 
+               RowBox[{"Abs", "[", 
+                RowBox[{
+                 RowBox[{"newcuboid", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"2", ",", "1"}], "]"}], "]"}], "-", 
+                 RowBox[{"newcuboid", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}]}], "/", 
+              "3"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"newcubes", " ", "=", " ", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"x", "+", "length"}], ",", 
+                   RowBox[{"y", "+", "length"}], ",", 
+                   RowBox[{"z", "+", "length"}]}], "}"}]}], "}"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"{", 
+                RowBox[{"x", ",", 
+                 RowBox[{"newcuboid", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"newcuboid", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"1", ",", "1"}], "]"}], "]"}], "+", 
+                  RowBox[{"2", "*", "length"}]}], ",", "length"}], "}"}], ",",
+                "\[IndentingNewLine]", 
+               RowBox[{"{", 
+                RowBox[{"y", ",", 
+                 RowBox[{"newcuboid", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"newcuboid", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"1", ",", "2"}], "]"}], "]"}], "+", 
+                  RowBox[{"2", "*", "length"}]}], ",", "length"}], "}"}], ",",
+                "\[IndentingNewLine]", 
+               RowBox[{"{", 
+                RowBox[{"z", ",", 
+                 RowBox[{"newcuboid", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"1", ",", "3"}], "]"}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"newcuboid", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"1", ",", "3"}], "]"}], "]"}], "+", 
+                  RowBox[{"2", "*", "length"}]}], ",", "length"}], "}"}]}], 
+              "]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"newcubes", " ", "=", " ", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{"newcubes", ",", "2"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"newcubes", " ", "=", " ", 
+             RowBox[{"Delete", "[", 
+              RowBox[{"newcubes", ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", "5", "}"}], ",", 
+                 RowBox[{"{", "11", "}"}], ",", 
+                 RowBox[{"{", "13", "}"}], ",", 
+                 RowBox[{"{", "14", "}"}], ",", 
+                 RowBox[{"{", "15", "}"}], ",", 
+                 RowBox[{"{", "17", "}"}], ",", 
+                 RowBox[{"{", "23", "}"}]}], "}"}]}], "]"}]}], ";", 
+            "\[IndentingNewLine]", "newcubes"}], "\[IndentingNewLine]", "}"}],
+           ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "@", "cubes"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"c", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"c", ",", "2"}], "]"}]}]}]}], "\[IndentingNewLine]", "]"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"init", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "3", ",", "3"}], "}"}]}], "}"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"result", " ", "=", " ", 
+    RowBox[{"NestList", "[", 
+     RowBox[{"MengerSponge", ",", "init", ",", "3"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"frames", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"sponge", " ", "=", " ", 
+        RowBox[{"result", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"draw", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Graphics3D", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Hue", "[", ".4", "]"}], ",", 
+             RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+             RowBox[{"Cuboid", "[", 
+              RowBox[{
+               RowBox[{"sponge", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "1"}], "]"}], "]"}], ",", 
+               RowBox[{"sponge", "[", 
+                RowBox[{"[", 
+                 RowBox[{"i", ",", "2"}], "]"}], "]"}]}], "]"}]}], "}"}], 
+           "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "@", "sponge"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{"draw", ",", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+         RowBox[{"Boxed", "\[Rule]", "False"}]}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "@", "result"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"frames", " ", "=", " ", 
+   RowBox[{"Flatten", "@", "frames"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListAnimate", "@", "frames"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<45.MengerSponge.gif\>\"", ",", "frames", ",", " ", 
+      RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",",
+       " ", 
+      RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]}]}], 
+     "]"}]}], "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.7406498175706105`*^9, 3.740649834150414*^9}, {
+   3.7406498663815765`*^9, 3.740649867420396*^9}, {3.7406500826001377`*^9, 
+   3.7406501176300983`*^9}, {3.740650188934329*^9, 3.7406506241735725`*^9}, {
+   3.740651256989743*^9, 3.740651421329793*^9}, {3.7406514625397406`*^9, 
+   3.740651542683981*^9}, {3.740651674359804*^9, 3.740651712479618*^9}, {
+   3.740652045969372*^9, 3.740652150841549*^9}, {3.7406521903294764`*^9, 
+   3.740652619023584*^9}, {3.7406526527823925`*^9, 3.7406528150892906`*^9}, {
+   3.7406528891090384`*^9, 3.7406530821391993`*^9}, {3.740653162128953*^9, 
+   3.740653341738942*^9}, {3.7406533718792295`*^9, 3.7406535054290113`*^9}, {
+   3.7406537865891504`*^9, 3.740653934699094*^9}, {3.740653986378807*^9, 
+   3.7406541403326907`*^9}, {3.740654199398875*^9, 3.7406545251609774`*^9}, {
+   3.74065457592857*^9, 3.7406547218983803`*^9}, {3.7406547546786623`*^9, 
+   3.740654795488431*^9}, 3.7406548634784555`*^9, {3.740654904168324*^9, 
+   3.7406551547924995`*^9}, {3.7406551855386057`*^9, 
+   3.7406554159774776`*^9}, {3.740655459148415*^9, 3.7406554994768047`*^9}, {
+   3.7406556398711157`*^9, 3.7406557439278803`*^9}, 3.7406558138180666`*^9, 
+   3.740656209667756*^9, {3.740656254721878*^9, 3.7406566112978487`*^9}, {
+   3.74065664355762*^9, 3.7406567613478255`*^9}, {3.740656830537958*^9, 
+   3.7406572311477404`*^9}, {3.7406573617874217`*^9, 
+   3.7406573878977394`*^9}, {3.7406574219673076`*^9, 3.740657435079553*^9}, {
+   3.7406575566573024`*^9, 3.7406576371110697`*^9}, {3.7406576677596693`*^9, 
+   3.7406576865508947`*^9}, {3.7406577975646462`*^9, 3.740657840144207*^9}, {
+   3.7406581135709734`*^9, 3.7406581976015673`*^9}, {3.740658280441824*^9, 
+   3.7406584408631744`*^9}, {3.740658543593115*^9, 3.740658560003001*^9}, {
+   3.7406586319438305`*^9, 3.7406586450893307`*^9}, {3.7406587826192474`*^9, 
+   3.7406587852195864`*^9}},ExpressionUUID->"547af16a-ea46-4166-8c76-\
+f7f5dcfddaf0"]
+},
+WindowSize->{1148, 1230},
+WindowMargins->{{Automatic, 45}, {40, Automatic}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 9006, 203, 599, "Input",ExpressionUUID->"547af16a-ea46-4166-8c76-f7f5dcfddaf0"]
+}
+]
+*)
+

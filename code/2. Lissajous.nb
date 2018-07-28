@@ -1,0 +1,229 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8726,        221]
+NotebookOptionsPosition[      8422,        208]
+NotebookOutlinePosition[      8772,        223]
+CellTagsIndexPosition[      8729,        220]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"lissajous", "[", " ", 
+    RowBox[{
+    "a_", ",", " ", "b_", ",", " ", "phasex_", ",", "phasey_", ",", "kx_", 
+     ",", "ky_"}], "]"}], " ", ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"a", "*", 
+      RowBox[{"Sin", "[", 
+       RowBox[{
+        RowBox[{"kx", "*", "t"}], "+", "phasex"}], "]"}]}], ",", 
+     RowBox[{"b", "*", 
+      RowBox[{"Sin", "[", 
+       RowBox[{
+        RowBox[{"ky", "*", "t"}], " ", "+", " ", "phasey"}], "]"}]}]}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gPlot", "[", 
+    RowBox[{
+    "theta_", ",", " ", "a_", ",", " ", "b_", ",", " ", "phasex_", ",", 
+     "phasey_", ",", "kx_", ",", "ky_"}], "]"}], " ", ":=", 
+   RowBox[{"ParametricPlot", "[", 
+    RowBox[{
+     RowBox[{"lissajous", "[", 
+      RowBox[{
+      "a", ",", " ", "b", ",", " ", "phasex", ",", "phasey", ",", "kx", ",", 
+       "ky"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "theta"}], "}"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "5"}], ",", "5"}], "}"}]}], "}"}]}], ",", "  ", 
+     RowBox[{"Axes", "\[Rule]", "False"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"gPoint", "[", 
+     RowBox[{"x_", ",", "y_"}], "]"}], " ", ":=", " ", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", " ", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "y"}], "}"}], "]"}]}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Manipulate", "[", 
+    RowBox[{
+     RowBox[{"Animate", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+          "theta", ",", " ", "a", ",", " ", "b", ",", " ", "phasex", ",", 
+           "phasey", ",", " ", "kx", ",", "ky"}], "]"}], ",", " ", 
+         RowBox[{"gPoint", "[", 
+          RowBox[{
+           RowBox[{"a", "*", 
+            RowBox[{"Sin", "[", 
+             RowBox[{
+              RowBox[{"kx", "*", "theta"}], "+", "phasex"}], "]"}]}], ",", 
+           " ", 
+           RowBox[{"b", "*", 
+            RowBox[{"Sin", "[", 
+             RowBox[{
+              RowBox[{"ky", "*", "theta"}], " ", "+", " ", "phasey"}], 
+             "]"}]}]}], "]"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"theta", ",", "0", ",", 
+         RowBox[{"2", "*", "Pi"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", " ", 
+       RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"b", ",", " ", 
+       RowBox[{"-", "5"}], ",", " ", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phasex", ",", " ", "0", ",", " ", 
+       RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"phasey", ",", " ", "0", ",", " ", 
+       RowBox[{"2", "*", "Pi"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"kx", ",", " ", 
+       RowBox[{"-", "50"}], ",", " ", "50"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"ky", ",", " ", 
+       RowBox[{"-", "50"}], ",", "50"}], "}"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Generating", " ", "gif", "\[IndentingNewLine]", 
+     RowBox[{"SetDirectory", "[", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"frames1", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+          "theta", ",", "5", ",", " ", "5", ",", " ", "0", ",", "0", ",", " ",
+            "20", ",", "19"}], "]"}], ",", " ", 
+         RowBox[{"gPoint", "[", 
+          RowBox[{
+           RowBox[{"5", "*", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"20", "*", "theta"}], "]"}]}], ",", 
+           RowBox[{"5", "*", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"19", "*", "theta"}], " ", "]"}]}]}], "]"}], ",", 
+         RowBox[{"ImageSize", "->", "Large"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"theta", ",", 
+         RowBox[{"Pi", "/", "180"}], ",", 
+         RowBox[{"2", "*", "Pi"}], ",", 
+         RowBox[{"Pi", "/", "180"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"frames2", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"2", "*", "Pi"}], ",", "5", ",", " ", "5", ",", " ", "0", 
+           ",", "0", ",", " ", "20", ",", "19"}], "]"}], ",", " ", 
+         RowBox[{"gPoint", "[", 
+          RowBox[{"0", ",", "0"}], "]"}], ",", 
+         RowBox[{"ImageSize", "->", "Large"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "30"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"frames", " ", "=", " ", 
+     RowBox[{"Join", "[", 
+      RowBox[{"frames1", ",", " ", "frames2"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<lissajous.gif\>\"", ",", "frames", ",", " ", 
+      RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",",
+       " ", 
+      RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".05"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7369461072647057`*^9, 3.736946238755274*^9}, {
+   3.7369462994182787`*^9, 3.7369463964411573`*^9}, {3.736946673800581*^9, 
+   3.7369467831400394`*^9}, {3.736947077162076*^9, 3.7369472155935497`*^9}, {
+   3.7369473163137083`*^9, 3.736947322995982*^9}, 3.7369474516102033`*^9, {
+   3.7369475442587357`*^9, 3.736947601464031*^9}, {3.7369477267289143`*^9, 
+   3.7369477709056644`*^9}, {3.736947953638939*^9, 3.736947973953971*^9}, {
+   3.7369480417037888`*^9, 3.7369480605191555`*^9}, 3.7369482182390995`*^9, {
+   3.736948259698839*^9, 3.736948259863062*^9}, {3.7369507579160185`*^9, 
+   3.73695076665105*^9}, {3.7369508952447624`*^9, 3.736950945723971*^9}, {
+   3.7369511210277386`*^9, 3.7369511406676483`*^9}, {3.7369516549966288`*^9, 
+   3.736951699845401*^9}, {3.7369518286051397`*^9, 3.7369518370438957`*^9}, {
+   3.736951924813881*^9, 3.7369519398645916`*^9}, {3.736960966716606*^9, 
+   3.7369609758582087`*^9}, {3.73696192460874*^9, 3.736961996307064*^9}, {
+   3.7369620502910886`*^9, 3.73696205916218*^9}, {3.7369623185882792`*^9, 
+   3.73696237869007*^9}, {3.736962420364607*^9, 3.736962443749648*^9}, {
+   3.736962923171487*^9, 3.7369629233649397`*^9}, {3.736962959684611*^9, 
+   3.736962962526053*^9}, {3.736962996189864*^9, 3.736963003097578*^9}, {
+   3.7369631485078554`*^9, 3.7369631642959986`*^9}, {3.7369633411895466`*^9, 
+   3.736963347624518*^9}, {3.7369633791396785`*^9, 3.7369638330564613`*^9}, {
+   3.736963971700077*^9, 3.7369639815317783`*^9}, {3.7369640592512493`*^9, 
+   3.7369640704037933`*^9}, 3.7369641487568784`*^9, {3.736964232369607*^9, 
+   3.7369642352071133`*^9}, {3.736964274971908*^9, 3.7369643457645035`*^9}, {
+   3.7369643932047515`*^9, 3.7369644227534027`*^9}, {3.7369644644617395`*^9, 
+   3.736964482259736*^9}, {3.736964518631516*^9, 3.7369645516830454`*^9}, {
+   3.736964664289044*^9, 3.7369647574113717`*^9}, {3.736964789562006*^9, 
+   3.7369648071549053`*^9}, {3.7369648606004972`*^9, 3.736964933721841*^9}, {
+   3.736964974898837*^9, 3.736965025077883*^9}, {3.7369650701097*^9, 
+   3.7369650702353635`*^9}, {3.7369651502538047`*^9, 3.736965257851036*^9}, {
+   3.7369653292765503`*^9, 3.7369653363244247`*^9}, {3.7369654566601405`*^9, 
+   3.7369654588649764`*^9}},ExpressionUUID->"c7cd911e-8f41-4861-a57f-\
+1da2110f1632"]
+},
+WindowSize->{1442, 863},
+WindowMargins->{{Automatic, 104}, {Automatic, 279}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7860, 186, 328, "Input",ExpressionUUID->"c7cd911e-8f41-4861-a57f-1da2110f1632"]
+}
+]
+*)
+

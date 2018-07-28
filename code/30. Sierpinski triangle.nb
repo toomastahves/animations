@@ -1,0 +1,194 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7656,        186]
+NotebookOptionsPosition[      7353,        173]
+NotebookOutlinePosition[      7702,        188]
+CellTagsIndexPosition[      7659,        185]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SierpinskiTriangle", "[", "polygons_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"newpolygons", "=", 
+        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"p1", ",", "p2", ",", "p3"}], "}"}], "=", 
+            RowBox[{"polygons", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"polygon1", " ", "=", " ", 
+            RowBox[{"{", 
+             RowBox[{"p1", ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"p1", "+", "p2"}], ")"}], "/", "2"}], ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"p1", "+", "p3"}], ")"}], "/", "2"}]}], "}"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"polygon2", " ", "=", " ", 
+            RowBox[{"{", 
+             RowBox[{"p2", ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"p2", "+", "p3"}], ")"}], "/", "2"}], ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"p1", "+", "p2"}], ")"}], "/", "2"}]}], "}"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"polygon3", " ", "=", " ", 
+            RowBox[{"{", 
+             RowBox[{"p3", ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"p1", "+", "p3"}], ")"}], "/", "2"}], ",", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"p2", "+", "p3"}], ")"}], "/", "2"}]}], "}"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"newpolygons", "=", 
+            RowBox[{"Join", "[", 
+             RowBox[{"newpolygons", ",", 
+              RowBox[{"{", 
+               RowBox[{"polygon1", ",", "polygon2", ",", "polygon3"}], 
+               "}"}]}], "]"}]}]}], "\[IndentingNewLine]", "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "@", "polygons"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "newpolygons"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polygons", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"Sqrt", "[", "3", "]"}]}], "}"}], "/", "2"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"result", " ", "=", " ", 
+    RowBox[{"NestList", "[", 
+     RowBox[{"SierpinskiTriangle", ",", "polygons", ",", "8"}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", 
+     RowBox[{"White", ",", 
+      RowBox[{"EdgeForm", "[", 
+       RowBox[{"Directive", "[", 
+        RowBox[{"Thin", ",", "Blue"}], "]"}], "]"}], ",", 
+      RowBox[{"Polygon", "[", 
+       RowBox[{"Last", "@", "result"}], "]"}]}], "}"}], "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"frames", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"Graphics", "[", 
+          RowBox[{"{", 
+           RowBox[{"White", ",", 
+            RowBox[{"EdgeForm", "[", 
+             RowBox[{"Directive", "[", 
+              RowBox[{"Thin", ",", "Blue"}], "]"}], "]"}], ",", 
+            RowBox[{"Polygon", "[", 
+             RowBox[{"result", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "@", "result"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<30.SierpinskiTriangle.gif\>\"", ",", "frames", ",", " ", 
+      RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",",
+       " ", 
+      RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", "1"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7393507664824142`*^9, 3.7393508013545494`*^9}, {
+   3.7393511440798187`*^9, 3.7393512438237762`*^9}, {3.739351441811965*^9, 
+   3.739351646220234*^9}, {3.739351677340413*^9, 3.7393517102908707`*^9}, {
+   3.739351954564912*^9, 3.73935196349*^9}, {3.739352110029836*^9, 
+   3.7393522463560667`*^9}, {3.739352411747917*^9, 3.7393524747927413`*^9}, {
+   3.7393529406332645`*^9, 3.7393529682433586`*^9}, {3.739353003453244*^9, 
+   3.739353059823161*^9}, {3.7393533894044795`*^9, 3.7393534485242815`*^9}, {
+   3.739353899957486*^9, 3.739353987327155*^9}, {3.7393543511543393`*^9, 
+   3.73935435292457*^9}, 3.739357251741001*^9, {3.739357309760518*^9, 
+   3.7393573606407204`*^9}, {3.7393573956605673`*^9, 
+   3.7393574123009124`*^9}, {3.739357682815941*^9, 3.739357690115954*^9}, {
+   3.739357720158181*^9, 3.739357762766018*^9}, {3.7393577984758368`*^9, 
+   3.7393578334959354`*^9}, {3.7393586963837986`*^9, 3.739358843121162*^9}, 
+   3.739360751899245*^9, {3.739360783923833*^9, 3.7393608745972376`*^9}, {
+   3.739361918011724*^9, 3.739361942111765*^9}, {3.739361974886148*^9, 
+   3.7393620087359457`*^9}, {3.739362059395774*^9, 3.7393620703657293`*^9}, {
+   3.7393621011694202`*^9, 3.7393622142868404`*^9}, {3.7393630183462553`*^9, 
+   3.7393631514264727`*^9}, {3.7393632052270193`*^9, 3.7393632218267384`*^9}, 
+   3.7393633805909433`*^9, {3.7393634204065*^9, 3.7393634283864374`*^9}, {
+   3.7393634638564577`*^9, 3.739363467486388*^9}, 3.73936350051656*^9, {
+   3.7393669288189487`*^9, 3.739366983248754*^9}, {3.7393670631356897`*^9, 
+   3.739367115185409*^9}, {3.7393671494453287`*^9, 3.7393671533857274`*^9}, 
+   3.7393676016174927`*^9, {3.7393697141076765`*^9, 3.739369807157411*^9}, {
+   3.7393700001040297`*^9, 3.739370004744045*^9}, {3.7393716573279977`*^9, 
+   3.739371671740567*^9}, 3.739372179936668*^9, {3.7405717866568184`*^9, 
+   3.7405719280276833`*^9}, {3.7405719607325487`*^9, 3.740572249650032*^9}, {
+   3.740572300078847*^9, 3.740572358850626*^9}, {3.7405725032206135`*^9, 
+   3.7405725038175354`*^9}},ExpressionUUID->"3d300503-aba1-485e-9eb7-\
+a665e2410804"]
+},
+WindowSize->{1230, 874},
+WindowMargins->{{Automatic, 179}, {66, Automatic}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6791, 151, 485, "Input",ExpressionUUID->"3d300503-aba1-485e-9eb7-a665e2410804"]
+}
+]
+*)
+

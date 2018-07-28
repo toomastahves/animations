@@ -1,0 +1,1112 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     48100,       1104]
+NotebookOptionsPosition[     47794,       1091]
+NotebookOutlinePosition[     48143,       1106]
+CellTagsIndexPosition[     48100,       1103]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"range", " ", "=", "4.5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"clothoid", "[", 
+    RowBox[{"fi_", ",", " ", 
+     RowBox[{"t_", "?", "NumericQ"}], ",", " ", "x0_", ",", " ", "y0_", ",", 
+     "a_"}], "]"}], ":=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", "*", 
+       RowBox[{"NIntegrate", "[", 
+        RowBox[{
+         RowBox[{"Sin", "[", "fi", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "0", ",", "t"}], "}"}], ",", " ", 
+         RowBox[{"Method", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"GlobalAdaptive", ",", 
+            RowBox[{"SymbolicProcessing", "\[Rule]", "0"}], ",", 
+            RowBox[{"SingularityHandler", "\[Rule]", "None"}], ",", 
+            RowBox[{"Method", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{"GaussKronrodRule", ",", 
+               RowBox[{"Points", "\[Rule]", "9"}]}], "}"}]}]}], "}"}]}]}], 
+        "]"}]}], "+", "x0"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"a", "*", 
+       RowBox[{"NIntegrate", "[", 
+        RowBox[{
+         RowBox[{"Cos", "[", "fi", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "0", ",", "t"}], "}"}], ",", " ", 
+         RowBox[{"Method", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"GlobalAdaptive", ",", 
+            RowBox[{"SymbolicProcessing", "\[Rule]", "0"}], ",", 
+            RowBox[{"SingularityHandler", "\[Rule]", "None"}], ",", 
+            RowBox[{"Method", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{"GaussKronrodRule", ",", 
+               RowBox[{"Points", "\[Rule]", "9"}]}], "}"}]}]}], "}"}]}]}], 
+        "]"}]}], "+", "y0"}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"gPlot", "[", 
+     RowBox[{"f_", ",", " ", "u_"}], "]"}], " ", ":=", " ", 
+    RowBox[{"ParametricPlot", "[", 
+     RowBox[{"f", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", 
+        RowBox[{"-", "u"}], ",", "u"}], "}"}], ",", 
+      RowBox[{"PlotPoints", "\[Rule]", "8"}], ",", " ", 
+      RowBox[{"Axes", "\[Rule]", "False"}], ",", " ", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"Hue", "[", 
+         RowBox[{"0.33", ",", " ", "1", ",", "0.5"}], "]"}], "}"}]}], ",", 
+      " ", 
+      RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", " ", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "range"}], ",", "range"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "range"}], ",", "range"}], "}"}]}], "}"}]}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", "Pi"}], ",", " ", "t", ",", " ", 
+         "0", ",", " ", "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", "0"}], ",", " ", "t", ",", "0", 
+         ",", " ", "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"3", "*", 
+           RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", ",", 
+         " ", "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"3", "*", 
+           RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", ",", 
+         " ", "0", ",", "1.13"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", "Pi"}], ",", " ", "t", ",", " ", 
+         "0", ",", " ", "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", "0"}], ",", " ", "t", ",", "0", 
+         ",", " ", "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"3", "*", 
+           RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", ",", 
+         " ", "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"3", "*", 
+           RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", ",", 
+         " ", "0", ",", "2"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"Pi", "/", "2"}], "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"Pi", "/", "2"}], "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", "Pi", "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", "0", "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", "0", ",", " ", "0", 
+         ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"Pi", "/", "4"}], "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"Pi", "/", "4"}], "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "+", 
+          RowBox[{"3", "*", 
+           RowBox[{"Pi", "/", "4"}]}], "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"gPlot", "[", 
+      RowBox[{
+       RowBox[{"clothoid", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+          RowBox[{"2.19", "*", "s"}], "-", 
+          RowBox[{"3", "*", 
+           RowBox[{"Pi", "/", "4"}]}], "-", 
+          RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", " ", 
+         "0", ",", "1.6"}], "]"}], ",", 
+       RowBox[{"2", "*", "Pi"}]}], "]"}]}], "\[IndentingNewLine]", "]"}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"gFrames1", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", "Pi"}], ",", " ", "t", ",", 
+             " ", "0", ",", " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", "0"}], ",", " ", "t", ",", "0",
+              ",", " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "1.13"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", "Pi"}], ",", " ", "t", ",", 
+             " ", "0", ",", " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", "0"}], ",", " ", "t", ",", "0",
+              ",", " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "2"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "2"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "2"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", "Pi", "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", "0", "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", "0", ",", " ", 
+             "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "4"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "4"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", "u"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"u", ",", 
+         RowBox[{"Pi", "/", "45"}], ",", 
+         RowBox[{"2", "*", "Pi"}], ",", " ", 
+         RowBox[{"Pi", "/", "45"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"gFrames2", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", "Pi"}], ",", " ", "t", ",", 
+             " ", "0", ",", " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", "0"}], ",", " ", "t", ",", "0",
+              ",", " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "1.13"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "2"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", "Pi"}], ",", " ", "t", ",", 
+             " ", "0", ",", " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", "0"}], ",", " ", "t", ",", "0",
+              ",", " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "4"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}]}], ",", " ", "t", ",", " ", "0", 
+             ",", " ", "0", ",", "2"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "2"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "2"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", "Pi", "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", "0", "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", "0", ",", " ", 
+             "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"Pi", "/", "4"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"Pi", "/", "4"}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "+", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"clothoid", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"s", "^", "3"}], "/", "3"}], "-", 
+              RowBox[{"2.19", "*", "s"}], "-", 
+              RowBox[{"3", "*", 
+               RowBox[{"Pi", "/", "4"}]}], "-", 
+              RowBox[{"Pi", "/", "8"}]}], ",", " ", "t", ",", " ", "0", ",", 
+             " ", "0", ",", "1.6"}], "]"}], ",", 
+           RowBox[{"2", "*", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"u", ",", "1", ",", "30"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"gFrames", " ", "=", " ", 
+     RowBox[{"Join", "[", 
+      RowBox[{"gFrames1", ",", " ", "gFrames2"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<clothoid.gif\>\"", ",", "gFrames", ",", " ", 
+      RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",",
+       " ", 
+      RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".05"}]}], "]"}]}], 
+   "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7374435327754965`*^9, 3.7374435636762652`*^9}, {
+   3.737443773837681*^9, 3.737443894886183*^9}, {3.737446623157219*^9, 
+   3.737446638348118*^9}, {3.7374467408774576`*^9, 3.7374467487632537`*^9}, {
+   3.737447149446941*^9, 3.737447176612401*^9}, {3.73744722726752*^9, 
+   3.7374472275475254`*^9}, {3.7374474221327505`*^9, 
+   3.7374474442974305`*^9}, {3.737447915157361*^9, 3.7374479324973965`*^9}, {
+   3.7374479881009007`*^9, 3.7374480220422974`*^9}, {3.737448140444707*^9, 
+   3.737448225966981*^9}, {3.737448456918375*^9, 3.7374485442219887`*^9}, {
+   3.7374485986712747`*^9, 3.7374486207580347`*^9}, {3.7374492146088605`*^9, 
+   3.737449339072502*^9}, 3.7374494042623696`*^9, {3.7374497115827475`*^9, 
+   3.7374497671980104`*^9}, {3.7374502393300996`*^9, 
+   3.7374503175544615`*^9}, {3.7374503522331038`*^9, 3.737450468784031*^9}, {
+   3.7374505365375624`*^9, 3.7374505418823085`*^9}, {3.73745057357752*^9, 
+   3.7374506574652686`*^9}, {3.737456999632036*^9, 3.737456999751793*^9}, {
+   3.737457031208026*^9, 3.7374571188211513`*^9}, {3.7374571545270123`*^9, 
+   3.7374571709368443`*^9}, {3.737464162381601*^9, 3.737464217311043*^9}, 
+   3.7374668508271*^9, 3.737467801522208*^9, {3.7374678682526455`*^9, 
+   3.7374678704115553`*^9}, {3.737467907240636*^9, 3.7374679243823743`*^9}, {
+   3.7374680485135155`*^9, 3.7374680652627954`*^9}, {3.73746862026884*^9, 
+   3.7374687793691216`*^9}, {3.7374690424506702`*^9, 
+   3.7374691333457785`*^9}, {3.737469310632866*^9, 3.7374693763494883`*^9}, {
+   3.737469424009821*^9, 3.737469590227708*^9}, {3.737469768986601*^9, 
+   3.7374700076237154`*^9}, {3.7374700493388467`*^9, 3.73747008330348*^9}, {
+   3.7374701471831303`*^9, 3.7374701474176416`*^9}, 3.737470182494495*^9, {
+   3.737470277198168*^9, 3.7374702857241383`*^9}, {3.7374703245980225`*^9, 
+   3.7374703256073265`*^9}, {3.7374703841186733`*^9, 
+   3.7374704222090073`*^9}, {3.7374704572913375`*^9, 
+   3.7374704968145604`*^9}, {3.737470579493647*^9, 3.7374706257393436`*^9}, {
+   3.737471136707381*^9, 3.7374711583858957`*^9}, {3.7374721282579823`*^9, 
+   3.7374721321784787`*^9}, {3.7374728540362387`*^9, 
+   3.7374729211515703`*^9}, {3.737473387217986*^9, 3.737473424343234*^9}, {
+   3.7374738075602555`*^9, 3.737473809321827*^9}, {3.7374740930461226`*^9, 
+   3.7374740996459737`*^9}, {3.737474165150734*^9, 3.737474202971793*^9}, {
+   3.7374742987620635`*^9, 3.737474359725387*^9}, {3.737474399690781*^9, 
+   3.737474510034937*^9}, {3.7374745450548763`*^9, 3.7374745636957536`*^9}, {
+   3.737474986213283*^9, 3.7374750192470083`*^9}, {3.737475111336109*^9, 
+   3.737475228516158*^9}, {3.7374753045208335`*^9, 3.737475367706018*^9}, {
+   3.737475414656206*^9, 3.7374754313019676`*^9}, {3.7374763006814013`*^9, 
+   3.737476366396529*^9}, {3.7374764133074346`*^9, 3.737476419626469*^9}, {
+   3.737476467977334*^9, 3.737476496801487*^9}, {3.7374765728868566`*^9, 
+   3.7374766033764668`*^9}, {3.737476840836602*^9, 3.737476843983021*^9}, {
+   3.737476981615509*^9, 3.7374770128766384`*^9}, {3.7374773165369053`*^9, 
+   3.737477356696912*^9}, {3.7374774252266617`*^9, 3.7374774568419895`*^9}, {
+   3.737477497134528*^9, 3.7374775278371897`*^9}, {3.7374775811113515`*^9, 
+   3.737477582671164*^9}, {3.7374798917092395`*^9, 3.7374799808840823`*^9}, {
+   3.7374800295878773`*^9, 3.737480127604229*^9}, {3.73748021701296*^9, 
+   3.7374802318772287`*^9}, {3.737480288781279*^9, 3.73748044258591*^9}, {
+   3.7374805149406652`*^9, 3.7374807636342325`*^9}, {3.73748080207881*^9, 
+   3.7374809564723425`*^9}, {3.737481002441688*^9, 3.737481081652635*^9}, {
+   3.737481225567675*^9, 3.737481489433202*^9}, {3.7374817072530637`*^9, 
+   3.7374817271392603`*^9}, {3.737481761438734*^9, 3.7374820369448333`*^9}, {
+   3.737482156818139*^9, 3.737482541261617*^9}, {3.737482645752083*^9, 
+   3.7374827569024887`*^9}, {3.7374828134917526`*^9, 3.73748290823032*^9}, {
+   3.737483068667607*^9, 3.73748352509853*^9}, {3.737483879629573*^9, 
+   3.7374838803476534`*^9}, {3.7374839717469025`*^9, 3.737484332025276*^9}, {
+   3.73748490692881*^9, 3.7374849381326942`*^9}, {3.7374855520030904`*^9, 
+   3.737485553593958*^9}, {3.7374857207756834`*^9, 3.737485754533272*^9}, {
+   3.737485800236905*^9, 3.737485887854445*^9}, {3.737485917997657*^9, 
+   3.73748594998335*^9}, 3.7374862052130575`*^9, {3.7375176007288604`*^9, 
+   3.7375176206559916`*^9}, {3.737517888922332*^9, 3.7375181355049763`*^9}, {
+   3.737518202077503*^9, 3.7375182996168737`*^9}, 3.7375188292580905`*^9, {
+   3.737518890511378*^9, 3.737518916834761*^9}, {3.7375189480876694`*^9, 
+   3.737518978033849*^9}, 3.7375190178928833`*^9, {3.737519069029785*^9, 
+   3.737519076977285*^9}, {3.737519158626408*^9, 3.737519170104484*^9}, {
+   3.7375192231866736`*^9, 3.7375192377348824`*^9}, {3.7375193274733953`*^9, 
+   3.737519377554658*^9}, {3.7375194412850065`*^9, 3.737519441376789*^9}, {
+   3.7375195106098933`*^9, 3.73751953731116*^9}, {3.7375195673530664`*^9, 
+   3.7375195872127495`*^9}, {3.7375197302308483`*^9, 
+   3.7375198086523905`*^9}, {3.737519882178362*^9, 3.737519969376011*^9}, {
+   3.737520006913311*^9, 3.7375200311460514`*^9}, {3.7375206962406235`*^9, 
+   3.73752076886299*^9}, {3.7375209666348867`*^9, 3.7375210551951246`*^9}, {
+   3.737521200930318*^9, 3.7375212100147734`*^9}, {3.737521319929391*^9, 
+   3.737521323337452*^9}, {3.7375213832691054`*^9, 3.7375214950336833`*^9}, {
+   3.7375218337338605`*^9, 3.7375219067179985`*^9}, {3.7375219481140065`*^9, 
+   3.737522092223488*^9}, {3.737524415995098*^9, 3.737524572703454*^9}, {
+   3.7375246063239536`*^9, 3.7375246359867544`*^9}, {3.7375247616867695`*^9, 
+   3.737524792708296*^9}, {3.7375249691610985`*^9, 3.7375250010016594`*^9}, {
+   3.73752511043138*^9, 3.7375251316694984`*^9}, {3.7375251664926467`*^9, 
+   3.7375251709440327`*^9}, {3.737525244529146*^9, 3.7375252957802963`*^9}, 
+   3.7375253627034483`*^9, {3.7375254373152866`*^9, 3.7375254922191734`*^9}, {
+   3.7375255833607416`*^9, 3.737525663769247*^9}, {3.737525804323596*^9, 
+   3.7375258960910845`*^9}, {3.7375259574238906`*^9, 3.73752596106514*^9}, {
+   3.7375260881569104`*^9, 3.7375261020217223`*^9}, {3.7375275927985516`*^9, 
+   3.737527617000292*^9}, {3.7375276491643085`*^9, 3.7375276493418336`*^9}, {
+   3.7375276931757536`*^9, 3.7375276936220875`*^9}, {3.7375277256069098`*^9, 
+   3.737527749003976*^9}, {3.737527789085041*^9, 3.737527888299902*^9}, {
+   3.7375279580303183`*^9, 3.7375279778038163`*^9}, {3.7375280105090485`*^9, 
+   3.737528102382636*^9}, {3.737528157877896*^9, 3.7375282283291664`*^9}, {
+   3.7375282597971845`*^9, 3.7375283335175266`*^9}, {3.7375283871755977`*^9, 
+   3.7375283976372385`*^9}, {3.737528449951169*^9, 3.7375284862841287`*^9}, {
+   3.7375285200291815`*^9, 3.737528575766961*^9}, {3.737528688472966*^9, 
+   3.7375287422546916`*^9}, 3.737528790476266*^9, {3.737528831956871*^9, 
+   3.7375288513489103`*^9}, {3.7375288888648167`*^9, 3.737529110317195*^9}, {
+   3.7375293711138573`*^9, 3.737529467774679*^9}, {3.7375295533577576`*^9, 
+   3.7375296070138283`*^9}, {3.7375296886299844`*^9, 3.737529789422338*^9}, {
+   3.7375298197599297`*^9, 3.737529842064741*^9}, {3.7375299998408184`*^9, 
+   3.7375300559062867`*^9}, {3.737530092309559*^9, 3.7375301493604803`*^9}, {
+   3.7375302991740065`*^9, 3.7375303140141997`*^9}, {3.7375318310932703`*^9, 
+   3.7375319186462336`*^9}, {3.7375320180870304`*^9, 3.737532071854954*^9}, {
+   3.737533250287321*^9, 3.7375334187592793`*^9}, {3.737533448801464*^9, 
+   3.737533511719463*^9}, {3.7375335546498113`*^9, 3.737533576535239*^9}, {
+   3.737534370413435*^9, 3.737534424856663*^9}, {3.7375349580594797`*^9, 
+   3.7375350041673613`*^9}, {3.737535065490267*^9, 3.7375351896095405`*^9}, {
+   3.737535343540732*^9, 3.7375354127540927`*^9}, {3.737535723119089*^9, 
+   3.737535727848526*^9}, {3.737535839039465*^9, 3.7375358514802675`*^9}, {
+   3.737535913328414*^9, 3.737536056999519*^9}, {3.737536096528825*^9, 
+   3.7375360999300528`*^9}, {3.7375362101405597`*^9, 
+   3.7375362107847214`*^9}, {3.737536327008078*^9, 3.73753634109772*^9}, {
+   3.7375364300490637`*^9, 3.7375365290011244`*^9}, {3.737536668379634*^9, 
+   3.737536686641616*^9}, {3.7375367429136972`*^9, 3.737536791103935*^9}, {
+   3.7375368438471603`*^9, 3.7375368491926107`*^9}, {3.7375369098835306`*^9, 
+   3.737536919792494*^9}, {3.737537099380494*^9, 3.737537181745923*^9}, {
+   3.737537344283741*^9, 3.7375373821922636`*^9}, {3.7375374318830643`*^9, 
+   3.7375374762322335`*^9}, {3.7375375182382545`*^9, 
+   3.7375376386412153`*^9}, {3.7375378327945595`*^9, 
+   3.7375378525625505`*^9}, {3.737538009946836*^9, 3.737538075418648*^9}, {
+   3.737539061887088*^9, 3.737539210771615*^9}, {3.737539272985024*^9, 
+   3.7375393341861944`*^9}, {3.73753946679536*^9, 3.7375395186490374`*^9}, {
+   3.7375397869892035`*^9, 3.737539792781736*^9}, {3.7375398447411165`*^9, 
+   3.737539863429172*^9}, {3.737539933406747*^9, 3.737539972588785*^9}, {
+   3.737540116380435*^9, 3.7375401266135764`*^9}, {3.737540158041164*^9, 
+   3.7375401657980523`*^9}, {3.7375402554456096`*^9, 
+   3.7375403114211254`*^9}, {3.7375403617491136`*^9, 3.737540415458036*^9}, 
+   3.737540525421578*^9, 3.7375406587049294`*^9, {3.737540810916479*^9, 
+   3.7375408307402573`*^9}, {3.737541313879354*^9, 3.7375416500138664`*^9}, {
+   3.737541798025529*^9, 3.7375418116692653`*^9}, {3.7375418615146217`*^9, 
+   3.7375418617350054`*^9}, {3.737542064590623*^9, 3.737542129269535*^9}, {
+   3.737542168538892*^9, 3.7375423506244082`*^9}, {3.7375423908547173`*^9, 
+   3.7375423983448167`*^9}, {3.7375424343577733`*^9, 3.73754244607944*^9}, {
+   3.737542479361374*^9, 3.737542725854788*^9}, {3.7375427656186914`*^9, 
+   3.737542827555495*^9}, {3.7375428726270943`*^9, 3.737542977967188*^9}, {
+   3.7375430420295415`*^9, 3.737543042631316*^9}, {3.7375432059504967`*^9, 
+   3.737543206390321*^9}, 3.7375450368652763`*^9, {3.737548077708307*^9, 
+   3.7375481224337473`*^9}},ExpressionUUID->"501629d3-2b3e-4846-af80-\
+e7f5d15b553c"]
+},
+WindowSize->{1560, 1024},
+WindowMargins->{{Automatic, 66}, {Automatic, 66}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 47232, 1069, 1929, "Input",ExpressionUUID->"501629d3-2b3e-4846-af80-e7f5d15b553c"]
+}
+]
+*)
+

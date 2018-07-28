@@ -1,0 +1,370 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14794,        362]
+NotebookOptionsPosition[     14490,        349]
+NotebookOutlinePosition[     14839,        364]
+CellTagsIndexPosition[     14796,        361]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"conicalrose", "[", 
+     RowBox[{"a_", ",", "b_", ",", "n_", ",", "c_"}], "]"}], " ", ":=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"a", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"n", "*", "t"}], "+", "c"}], "]"}], "*", 
+       RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+      RowBox[{"a", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"n", "*", "t"}], "+", "c"}], "]"}], "*", 
+       RowBox[{"Sin", "[", "t", "]"}]}], ",", 
+      RowBox[{"b", "*", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"n", "*", "t"}], "+", "c"}], "]"}]}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"gPlot", "[", 
+     RowBox[{"f_", ",", "style_"}], "]"}], ":=", 
+    RowBox[{"ParametricPlot3D", "[", 
+     RowBox[{"f", ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", 
+        RowBox[{"2", "*", "Pi"}]}], "}"}], ",", " ", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", "style", ",", " ", 
+      RowBox[{"Boxed", "\[Rule]", "False"}], ",", " ", 
+      RowBox[{"Axes", "\[Rule]", "False"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Animate", "[", 
+    RowBox[{
+     RowBox[{"Show", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"gPlot", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"conicalrose", "[", 
+            RowBox[{
+             RowBox[{"1", "*", "j"}], ",", "0.5", ",", "7", ",", "i"}], "]"}],
+            ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+             RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"ColorFunction", "\[Rule]", 
+          RowBox[{"Function", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+            RowBox[{"Hue", "[", 
+             RowBox[{
+              RowBox[{"Abs", "[", "z", "]"}], "/", "7"}], "]"}]}], "]"}]}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"gPlot", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"conicalrose", "[", 
+            RowBox[{
+             RowBox[{"2", "*", "j"}], ",", "1", ",", "4", ",", "i"}], "]"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+             RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"ColorFunction", "\[Rule]", 
+          RowBox[{"Function", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+            RowBox[{"Hue", "[", 
+             RowBox[{
+              RowBox[{"Abs", "[", "z", "]"}], "/", "4"}], "]"}]}], "]"}]}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"gPlot", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"conicalrose", "[", 
+            RowBox[{
+             RowBox[{"3", "*", "j"}], ",", "1", ",", "4", ",", "i"}], "]"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+             RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"ColorFunction", "\[Rule]", 
+          RowBox[{"Function", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+            RowBox[{"Hue", "[", 
+             RowBox[{
+              RowBox[{"Abs", "[", "z", "]"}], "/", "3"}], "]"}]}], "]"}]}]}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", " ", 
+       RowBox[{"ViewPoint", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"Pi", "*", 
+           RowBox[{"(", 
+            RowBox[{"1", "-", "j"}], ")"}]}], ",", "Pi"}], "}"}]}]}], 
+      "\[IndentingNewLine]", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "0", ",", "1", ",", "0.01"}], "}"}], ",", " ", 
+     RowBox[{"AnimationRunning", "\[Rule]", "False"}], ",", " ", 
+     RowBox[{"RefreshRate", "\[Rule]", "60"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gFrames1", " ", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"conicalrose", "[", 
+              RowBox[{
+               RowBox[{"1", "*", "j"}], ",", "0.5", ",", "7", ",", "i"}], 
+              "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ColorFunction", "\[Rule]", 
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+              RowBox[{"Hue", "[", 
+               RowBox[{
+                RowBox[{"Abs", "[", "z", "]"}], "/", "7"}], "]"}]}], 
+             "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"conicalrose", "[", 
+              RowBox[{
+               RowBox[{"2", "*", "j"}], ",", "1", ",", "4", ",", "i"}], "]"}],
+              ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ColorFunction", "\[Rule]", 
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+              RowBox[{"Hue", "[", 
+               RowBox[{
+                RowBox[{"Abs", "[", "z", "]"}], "/", "4"}], "]"}]}], 
+             "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"conicalrose", "[", 
+              RowBox[{
+               RowBox[{"3", "*", "j"}], ",", "1", ",", "4", ",", "i"}], "]"}],
+              ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ColorFunction", "\[Rule]", 
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+              RowBox[{"Hue", "[", 
+               RowBox[{
+                RowBox[{"Abs", "[", "z", "]"}], "/", "3"}], "]"}]}], 
+             "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", " ", 
+         RowBox[{"ViewPoint", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"Pi", "*", 
+             RowBox[{"(", 
+              RowBox[{"1", "-", "j"}], ")"}]}], ",", "Pi"}], "}"}]}]}], 
+        "\[IndentingNewLine]", "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "0", ",", "1", ",", "0.01"}], "}"}]}], "]"}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"gFrames2", " ", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Show", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"conicalrose", "[", 
+              RowBox[{"1", ",", "0.5", ",", "7", ",", "i"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ColorFunction", "\[Rule]", 
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+              RowBox[{"Hue", "[", 
+               RowBox[{
+                RowBox[{"Abs", "[", "z", "]"}], "/", "7"}], "]"}]}], 
+             "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"conicalrose", "[", 
+              RowBox[{"2", ",", "1", ",", "4", ",", "i"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ColorFunction", "\[Rule]", 
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+              RowBox[{"Hue", "[", 
+               RowBox[{
+                RowBox[{"Abs", "[", "z", "]"}], "/", "4"}], "]"}]}], 
+             "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"gPlot", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"conicalrose", "[", 
+              RowBox[{"3", ",", "1", ",", "4", ",", "i"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"-", "Pi"}], ",", "Pi", ",", 
+               RowBox[{"Pi", "/", "4"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ColorFunction", "\[Rule]", 
+            RowBox[{"Function", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"x", ",", "y", ",", "z"}], "}"}], ",", 
+              RowBox[{"Hue", "[", 
+               RowBox[{
+                RowBox[{"Abs", "[", "z", "]"}], "/", "3"}], "]"}]}], 
+             "]"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", " ", 
+         RowBox[{"ViewPoint", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0", ",", "Pi"}], "}"}]}]}], 
+        "\[IndentingNewLine]", "]"}], ",", " ", 
+       RowBox[{"{", "30", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"gFrames", "=", 
+     RowBox[{"Join", "[", 
+      RowBox[{"gFrames1", ",", "gFrames2"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<25.ConicalRose.gif\>\"", ",", "gFrames", ",", " ", 
+      RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",",
+       " ", 
+      RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".05"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7387339662345104`*^9, 3.7387340625884724`*^9}, {
+   3.7387341554996347`*^9, 3.7387342825078187`*^9}, 3.7387343988271313`*^9, {
+   3.7387344389020376`*^9, 3.738734442029234*^9}, {3.7387346408119707`*^9, 
+   3.738734724097912*^9}, {3.738734758572115*^9, 3.7387347771010747`*^9}, {
+   3.7387360705535135`*^9, 3.73873611281079*^9}, {3.738736661576665*^9, 
+   3.738736668399593*^9}, {3.7387367244130244`*^9, 3.738736900767524*^9}, {
+   3.7387380240698633`*^9, 3.738738112365934*^9}, {3.7387381622154484`*^9, 
+   3.73873823430878*^9}, {3.738739368580258*^9, 3.7387395221724834`*^9}, {
+   3.7387395547868767`*^9, 3.738740066875496*^9}, {3.7387406959705153`*^9, 
+   3.7387411300829587`*^9}, 3.738741406446039*^9, {3.7387414398371887`*^9, 
+   3.738741565008579*^9}, {3.7387416830366244`*^9, 3.738741823822771*^9}, {
+   3.7387418561217184`*^9, 3.738741874240657*^9}, {3.738748194680474*^9, 
+   3.738748217263698*^9}, {3.7387483008415337`*^9, 3.7387483117764564`*^9}, {
+   3.7387531509684253`*^9, 3.7387531809206886`*^9}, {3.738753222397194*^9, 
+   3.738753224080801*^9}, {3.7387581723413363`*^9, 3.7387582523805523`*^9}, {
+   3.73875828651377*^9, 3.7387583709330354`*^9}, {3.738758405489645*^9, 
+   3.73875842649776*^9}, {3.7387584640992937`*^9, 3.73875849696692*^9}, {
+   3.7387588543857937`*^9, 3.738758936770362*^9}, {3.738760089990751*^9, 
+   3.73876023097651*^9}, {3.7387602635962715`*^9, 3.738760366873766*^9}, {
+   3.7387603982071304`*^9, 3.7387604685358543`*^9}, {3.7387614762488422`*^9, 
+   3.738761556548706*^9}, {3.738761635252359*^9, 3.7387617114685783`*^9}, {
+   3.738761838399118*^9, 3.738761850941201*^9}, 3.7387618855117235`*^9, {
+   3.738762344149615*^9, 3.738762350579706*^9}, {3.7387625325253906`*^9, 
+   3.7387626908836265`*^9}, {3.738762742842708*^9, 3.738762940420187*^9}, {
+   3.7387630162434025`*^9, 3.738763149858278*^9}, {3.738763189733545*^9, 
+   3.7387634096035395`*^9}, {3.7387635236826305`*^9, 3.738763534962185*^9}, {
+   3.7387643964429507`*^9, 3.7387644605490375`*^9}, {3.738764503953328*^9, 
+   3.738764580227892*^9}, {3.7387647469690123`*^9, 3.738764793472992*^9}, {
+   3.738764897627031*^9, 3.7387649547141347`*^9}, {3.7387650397000475`*^9, 
+   3.7387650401915035`*^9}, {3.738765136017315*^9, 3.738765139000019*^9}, {
+   3.7387652304094915`*^9, 3.738765249727319*^9}, {3.738765348046022*^9, 
+   3.738765387024334*^9}, {3.738765440974335*^9, 3.7387654452678843`*^9}, {
+   3.738765477147417*^9, 3.7387655382246027`*^9}, {3.738765642252469*^9, 
+   3.738765643088224*^9}, {3.7387656735657935`*^9, 3.7387656877855396`*^9}, {
+   3.738765853563545*^9, 
+   3.7387658572107124`*^9}},ExpressionUUID->"8004ea3b-8dbb-4377-a5c6-\
+701c8c8c3507"]
+},
+WindowSize->{1193, 872},
+WindowMargins->{{Automatic, 72}, {241, Automatic}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 13928, 327, 594, "Input",ExpressionUUID->"8004ea3b-8dbb-4377-a5c6-701c8c8c3507"]
+}
+]
+*)
+
