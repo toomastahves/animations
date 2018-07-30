@@ -10,74 +10,131 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7733,        206]
-NotebookOptionsPosition[      7432,        193]
-NotebookOutlinePosition[      7779,        208]
-CellTagsIndexPosition[      7736,        205]
+NotebookDataLength[     12232,        301]
+NotebookOptionsPosition[     11927,        288]
+NotebookOutlinePosition[     12277,        303]
+CellTagsIndexPosition[     12234,        300]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"n", " ", "=", " ", "1000"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"getPiCircle", "[", 
+    RowBox[{"points_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     RowBox[{"4", "*", 
+      RowBox[{"Mean", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Norm", "[", "#", "]"}], "<", "1"}], ",", "1", ",", "0"}],
+           "]"}], "&"}], "/@", "points"}], "]"}]}], ",", "5"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"points", " ", "=", " ", 
-    RowBox[{"RandomReal", "[", 
-     RowBox[{
-      RowBox[{"{", 
+   RowBox[{"getPiSphere", "[", 
+    RowBox[{"points_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     RowBox[{"6", "*", 
+      RowBox[{"Mean", "[", 
        RowBox[{
-        RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"n", ",", "2"}], "}"}]}], "]"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Norm", "[", "#", "]"}], "<", "1"}], ",", "1", ",", "0"}],
+           "]"}], "&"}], "/@", "points"}], "]"}]}], ",", "5"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gPlot2D", "[", 
+    RowBox[{"points_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"pi", " ", "=", " ", 
+       RowBox[{"getPiCircle", "[", 
+        RowBox[{"points", ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"gRectangle", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"White", ",", 
+         RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+         RowBox[{"Rectangle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", 
+             RowBox[{"-", "1"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"gCircle", " ", "=", "  ", 
+       RowBox[{"Circle", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"gPoints", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Norm", "[", "#", "]"}], "<", "1"}], ",", "Green", ",", 
+             "Red"}], "]"}], ",", 
+           RowBox[{"PointSize", "[", ".002", "]"}], ",", 
+           RowBox[{"Point", "[", "#", "]"}]}], "}"}], "&"}], "/@", 
+        "points"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"gPi", " ", "=", " ", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<Pi = ``\>\"", ",", "pi"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1.1"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"gN", " ", "=", " ", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<n = ``\>\"", ",", "n"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1.2"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "gRectangle", ",", "gCircle", ",", "gPoints", ",", "gPi", ",", 
+           "gN"}], "}"}], "]"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"gPlot", "[", 
+    RowBox[{"gPlot3D", "[", 
      RowBox[{"points_", ",", "n_"}], "]"}], ":=", 
     RowBox[{"Module", "[", 
      RowBox[{
       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"pi", " ", "=", " ", 
-        RowBox[{"N", "[", 
-         RowBox[{
-          RowBox[{"4", "*", 
-           RowBox[{
-            RowBox[{"Count", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{
-                RowBox[{"If", "[", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{"#", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], "^", "2"}], "+", 
-                    RowBox[{
-                    RowBox[{"#", "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], "^", "2"}]}], "<", "1"}], 
-                  ",", "True", ",", "False"}], "]"}], "&"}], "/@", "points"}],
-               ",", "True"}], "]"}], "/", "n"}]}], ",", "5"}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"gRectangle", " ", "=", " ", 
+        RowBox[{"getPiSphere", "[", 
+         RowBox[{"points", ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"gSphere", "=", "  ", 
         RowBox[{"{", 
-         RowBox[{"White", ",", 
-          RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
-          RowBox[{"Rectangle", "[", 
-           RowBox[{
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"-", "1"}], ",", 
-              RowBox[{"-", "1"}]}], "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"1", ",", "1"}], "}"}]}], "]"}]}], "}"}]}], ";", 
+         RowBox[{
+          RowBox[{"Opacity", "[", ".1", "]"}], ",", 
+          RowBox[{"Sphere", "[", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "0"}], "}"}], "]"}]}], "}"}]}], ";", 
        "\[IndentingNewLine]", 
-       RowBox[{"gCircle", " ", "=", "  ", 
-        RowBox[{"Circle", "[", "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"gPoints", " ", "=", " ", 
         RowBox[{
          RowBox[{
@@ -86,71 +143,84 @@ Cell[BoxData[{
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
-               RowBox[{
-                RowBox[{
-                 RowBox[{"#", "[", 
-                  RowBox[{"[", "1", "]"}], "]"}], "^", "2"}], "+", 
-                RowBox[{
-                 RowBox[{"#", "[", 
-                  RowBox[{"[", "2", "]"}], "]"}], "^", "2"}]}], "<", "1"}], 
-              ",", "Green", ",", "Red"}], "]"}], ",", 
-            RowBox[{"PointSize", "[", ".001", "]"}], ",", 
+               RowBox[{"Norm", "[", "#", "]"}], "<", "1"}], ",", "Green", ",",
+               "Red"}], "]"}], ",", 
+            RowBox[{"PointSize", "[", ".004", "]"}], ",", 
             RowBox[{"Point", "[", "#", "]"}]}], "}"}], "&"}], "/@", 
          "points"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"gN", " ", "=", " ", 
-        RowBox[{"Text", "[", 
-         RowBox[{
-          RowBox[{"StringForm", "[", 
-           RowBox[{"\"\<Pi = ``\>\"", ",", "pi"}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"0", ",", "1.1"}], "}"}]}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
        RowBox[{"gPi", " ", "=", " ", 
-        RowBox[{"Text", "[", 
-         RowBox[{
-          RowBox[{"StringForm", "[", 
-           RowBox[{"\"\<n = ``\>\"", ",", 
-            RowBox[{"n", "-", "1"}]}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"0", ",", "1.2"}], "}"}]}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
+        RowBox[{"\"\<Pi = \>\"", "<>", 
+         RowBox[{"ToString", "@", "pi"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"gN", " ", "=", " ", 
+        RowBox[{"\"\<n = \>\"", "<>", 
+         RowBox[{"ToString", "@", "n"}]}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"Show", "[", 
         RowBox[{
-         RowBox[{"Graphics", "[", 
+         RowBox[{"Graphics3D", "[", 
+          RowBox[{"{", 
+           RowBox[{"gSphere", ",", "gPoints"}], "}"}], "]"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+         RowBox[{"Epilog", "\[Rule]", 
           RowBox[{"{", 
            RowBox[{
-           "gRectangle", ",", "gCircle", ",", "gPoints", ",", "gN", ",", 
-            "gPi"}], "}"}], "]"}], ",", 
-         RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
-     "\[IndentingNewLine]", "]"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+            RowBox[{"Inset", "[", 
+             RowBox[{"gN", ",", 
+              RowBox[{"{", 
+               RowBox[{".02", ",", "0.99"}], "}"}]}], "]"}], ",", 
+            RowBox[{"Inset", "[", 
+             RowBox[{"gPi", ",", 
+              RowBox[{"{", 
+               RowBox[{".02", ",", "0.96"}], "}"}]}], "]"}]}], "}"}]}]}], 
+        "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", " ", "=", " ", "50000"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"points", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "3"}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"frames", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"gPlot3D", "[", 
+        RowBox[{
+         RowBox[{"Take", "[", 
+          RowBox[{"points", ",", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "i"}], "}"}]}], "]"}], ",", "i"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "500", ",", "50000", ",", "500"}], "}"}]}], "]"}]}],
+     ";", "\[IndentingNewLine]", 
+    RowBox[{"ListAnimate", "@", "frames"}], ";"}], "\[IndentingNewLine]", 
+   "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"folded", " ", "=", " ", 
-   RowBox[{"Table", "[", 
+  RowBox[{"n", " ", "=", " ", "1000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"points", " ", "=", " ", 
+   RowBox[{"RandomReal", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"n", ",", 
-       RowBox[{"Take", "[", 
-        RowBox[{"points", ",", 
-         RowBox[{"{", 
-          RowBox[{"1", ",", "n"}], "}"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
      RowBox[{"{", 
-      RowBox[{"n", ",", "1", ",", "1000", ",", "10"}], "}"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+      RowBox[{"n", ",", "2"}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"frames", " ", "=", " ", 
    RowBox[{"Table", "[", 
     RowBox[{
-     RowBox[{"gPlot", "[", 
+     RowBox[{"gPlot2D", "[", 
       RowBox[{
-       RowBox[{"folded", "[", 
-        RowBox[{"[", 
-         RowBox[{"n", ",", "2"}], "]"}], "]"}], ",", 
-       RowBox[{"folded", "[", 
-        RowBox[{"[", 
-         RowBox[{"n", ",", "1"}], "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"Take", "[", 
+        RowBox[{"points", ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "i"}], "}"}]}], "]"}], ",", "i"}], "]"}], ",", 
      RowBox[{"{", 
-      RowBox[{"n", ",", "1", ",", "100"}], "}"}]}], "]"}]}], 
+      RowBox[{"i", ",", "10", ",", "1000", ",", "10"}], "}"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -163,7 +233,7 @@ Cell[BoxData[{
      RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"Export", "[", 
-     RowBox[{"\"\<51.MonteCarlo.gif\>\"", ",", "frames", ",", " ", 
+     RowBox[{"\"\<51.1.MonteCarlo.gif\>\"", ",", "frames", ",", " ", 
       RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}]}], 
      "]"}]}], "\[IndentingNewLine]", "*)"}]}]}], "Input",
  CellChangeTimes->{{3.741864462965686*^9, 3.741864530359123*^9}, {
@@ -187,12 +257,37 @@ Cell[BoxData[{
    3.74187578790617*^9, 3.7418757932462444`*^9}, {3.7418784672182703`*^9, 
    3.741878498849928*^9}, {3.741878826210379*^9, 3.7418788451780148`*^9}, 
    3.7418788776182675`*^9, {3.741880909915767*^9, 3.7418809126439285`*^9}, {
-   3.7418836737135963`*^9, 
-   3.741883734265132*^9}},ExpressionUUID->"8fe923f9-eb88-4334-bb57-\
+   3.7418836737135963`*^9, 3.741883734265132*^9}, {3.7419175704174747`*^9, 
+   3.7419175729873147`*^9}, {3.741929288610865*^9, 3.7419293066564136`*^9}, {
+   3.741929642226571*^9, 3.741929708759518*^9}, {3.7419297413226104`*^9, 
+   3.7419299772918463`*^9}, {3.7419300241431627`*^9, 3.7419300479593835`*^9}, 
+   3.7419310672983093`*^9, {3.7419311113823223`*^9, 3.7419311486131964`*^9}, {
+   3.7419320311827087`*^9, 3.7419320762788143`*^9}, {3.741932694243123*^9, 
+   3.7419326945627756`*^9}, {3.741932745694508*^9, 3.7419328341498833`*^9}, {
+   3.7419361539622197`*^9, 3.741936173106042*^9}, {3.7419384544563074`*^9, 
+   3.7419385536359367`*^9}, {3.7419386401244917`*^9, 
+   3.7419386635034924`*^9}, {3.7419387185520554`*^9, 3.741938783675756*^9}, {
+   3.741938858111005*^9, 3.7419388661652403`*^9}, {3.7419388995059223`*^9, 
+   3.7419390239327397`*^9}, {3.7419390809569597`*^9, 
+   3.7419390889150696`*^9}, {3.7419391702311907`*^9, 3.741939323963081*^9}, 
+   3.7419395388504868`*^9, {3.74193975986628*^9, 3.7419397991104207`*^9}, {
+   3.7419399039829655`*^9, 3.7419399115785327`*^9}, 3.7419399803299894`*^9, {
+   3.7419400433436775`*^9, 3.741940250238347*^9}, {3.7419402905985374`*^9, 
+   3.7419403201799817`*^9}, {3.741940481306098*^9, 3.7419405506183977`*^9}, {
+   3.741940658051305*^9, 3.741940661649226*^9}, {3.7419408236486387`*^9, 
+   3.7419408291000834`*^9}, {3.7419412818237514`*^9, 
+   3.7419413243062983`*^9}, {3.7419413631959257`*^9, 3.741941377931628*^9}, {
+   3.7419414165376616`*^9, 3.741941417089694*^9}, {3.7419414571618314`*^9, 
+   3.7419415281410437`*^9}, 3.741941573054399*^9, {3.7419416470528913`*^9, 
+   3.7419417715881824`*^9}, 3.741941823929527*^9, {3.7419418818659315`*^9, 
+   3.741941909360998*^9}, {3.7419424299478807`*^9, 3.741942441429228*^9}, {
+   3.741942498680215*^9, 3.7419425503079815`*^9}, {3.7419430266107564`*^9, 
+   3.7419430460371456`*^9}, {3.741943085562072*^9, 
+   3.7419430891707306`*^9}},ExpressionUUID->"8fe923f9-eb88-4334-bb57-\
 838ff08a4044"]
 },
-WindowSize->{946, 872},
-WindowMargins->{{Automatic, 83}, {52, Automatic}},
+WindowSize->{1092, 1021},
+WindowMargins->{{Automatic, 328}, {16, Automatic}},
 FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -207,7 +302,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 6870, 171, 409, "Input",ExpressionUUID->"8fe923f9-eb88-4334-bb57-838ff08a4044"]
+Cell[558, 20, 11365, 266, 694, "Input",ExpressionUUID->"8fe923f9-eb88-4334-bb57-838ff08a4044"]
 }
 ]
 *)
