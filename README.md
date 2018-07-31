@@ -41,7 +41,7 @@ ListAnimate@frames;
 
 ### 52. Lagrange interpolation [Wikipedia](https://en.wikipedia.org/wiki/Lagrange_polynomial)
 
-Defining Lagrange interpolation function. Built-in function [Interpolation[]]http://reference.wolfram.com/language/ref/Interpolation.html also implements Lagrange polynomials.  
+Defining Lagrange interpolation function. Built-in function [Interpolation](http://reference.wolfram.com/language/ref/Interpolation.html) also implements Lagrange polynomials.  
 ```mathematica
 interpolate[points_] := Module[{y = 0},
    {xvalues, yvalues} = points;
