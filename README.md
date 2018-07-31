@@ -47,11 +47,9 @@ interpolate[points_] := Module[{y = 0},
    {xvalues, yvalues} = points;
    Table[{
      Table[
-      If[i != j, 
-       lx *= (x - xvalues[[i]])/(xvalues[[j]] - xvalues[[i]])], {i, 1,
-        Length@xvalues}];
-     y += yvalues[[j]]*lx;
-     lx = 1;
+      If[i != j, lx *= (x - xvalues[[i]])/(xvalues[[j]] - xvalues[[i]])], {i, 1, Length@xvalues}];
+      y += yvalues[[j]]*lx;
+      lx = 1;
      }, {j, 1, Length@xvalues}];
    Simplify@y
    ];
@@ -72,4 +70,4 @@ frames = Table[gPlot[Take[points, {1, i}]], {i, 2, Length@points}];
 ListAnimate[frames];
 ```
 
-![Image of Lagrange interpolation](/img/52.52.LagrangeInterpolation.gif)
+![Image of Lagrange interpolation](/img/52.LagrangeInterpolation.gif)
