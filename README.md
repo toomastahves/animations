@@ -103,3 +103,35 @@ ListAnimate@frames;
 ```
 
 ![Image of Least Squares](/img/53.LeastSquares.gif)
+
+### 54. k-NN classification [Wikipedia](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) [GeeksforGeeks](https://www.youtube.com/watch?v=odqIu23OSbs)
+
+Simulating data. Creating 10 green points, 10 blue points and 50 unclassified points.
+```mathematica
+data = Join[{#, Blue} & /@ RandomReal[{-5, 1}, {10, 2}], {#, Green} & /@ RandomReal[{-1, 5}, {10, 2}]];
+unclassified = RandomReal[{-5, 5}, {50, 2}];
+```
+
+Calculating Euclidean distance between given point and data. Classifying given point with most common color.  
+Explicitly defined, built-in methods [NearestNeighbors](http://reference.wolfram.com/language/ref/method/NearestNeighbors.html)
+```mathematica
+distance[p1_, p2_] := N@Norm[(p1 - p2)^2];
+classify[point_, data_, k_] := Module[{},
+   sorted = SortBy[{distance[point, #[[1]]], #[[2]]} & /@ data, First];
+   First@First@GatherBy[Take[sorted[[All, 2]], {1, k}]]
+   ];
+```
+
+Visualizing data. Using VoroinoiMesh to visualize boundaries.
+```mathematica
+visualizePoints[data_] := Table[{data[[i, 2]], PointSize[.02], Point[data[[i, 1]]]}, {i, 1, Length@data}];
+draw[data_] := Show[VoronoiMesh[data[[All, 1]], {{-5, 5}, {-5, 5}}, PlotTheme -> "Monochrome"], Graphics[visualizePoints[data]], ImageSize -> Large];
+```
+
+Classifying data, k=1.
+```mathematica
+k = 1;
+classified = Table[{unclassified[[i]], classify[unclassified[[i]], data, k]}, {i,1, Length@unclassified}];
+```
+
+![Image of kNN](/img/54.kNN.gif)
