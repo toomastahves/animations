@@ -71,3 +71,35 @@ ListAnimate[frames];
 ```
 
 ![Image of Lagrange interpolation](/img/52.LagrangeInterpolation.gif)
+
+### 53. Least Squares [Wikipedia](https://en.wikipedia.org/wiki/Least_squares) [Linear Regression](https://en.wikipedia.org/wiki/Linear_regression) [MIT 18.02SC](https://www.youtube.com/watch?v=YwZYSTQs-Hk)
+
+Simulating data.
+```mathematica
+data = {#, 2 + 0.5*# + RandomReal[{-5, 5}]} & /@ RandomReal[{-10, 10}, 100];
+```
+
+Defining Least squares function explicitly. Built-in function [LeastSquares](http://reference.wolfram.com/language/ref/LeastSquares.html).  
+Plotting result
+```mathematica
+draw[data_] := Module[{},
+   {xi, yi} = Transpose[data];
+   {a1, b1} = {a, b} /. First@Solve[{a*Total[xi^2] + b*Total[xi] == Total[xi*yi], a*Total[xi] + b*Length[xi] == Total[yi]}, {a, b}];
+   eq = b1 + a1*x;
+   gN = Graphics@Text[StringForm["n = ``", Length@data], {-8.5, 9.5}];
+   gA = Graphics@Text[StringForm["a = ``", a1], {-8.5, 9}];
+   gB = Graphics@Text[StringForm["b = ``", b1], {-8.5, 8.5}];
+   plot1 = ListPlot[Transpose[{xi, yi}], PlotStyle -> Blue, AspectRatio -> Automatic, PlotRange -> {{-10, 10}, {-10, 10}}];
+   plot2 = Plot[eq, {x, -10, 10}, PlotStyle -> {Red, Thin}];
+   Show[plot1, plot2, gN, gA, gB, ImageSize -> Large]
+   ];
+```
+
+Folding points and creating frames.
+```mathematica
+points = Table[Take[data, {1, i}], {i, 2, Length@data}];
+frames = Table[draw[points[[i]]], {i, 1, Length@points}];
+ListAnimate@frames;
+```
+
+![Image of Least Squares](/img/53.LeastSquares.gif)
