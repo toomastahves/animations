@@ -135,3 +135,34 @@ classified = Table[{unclassified[[i]], classify[unclassified[[i]], data, k]}, {i
 ```
 
 ![Image of kNN](/img/54.kNN.gif)
+
+### 55. Naive Bayes classifier [Wikipedia](https://en.wikipedia.org/wiki/Naive_Bayes_classifier) [Saed Sayad](http://www.saedsayad.com/naive_bayesian.htm)
+
+Simulating data. Creating 10 of each red/green/blue points on (x,y) plane. Distributed according to normal distribution.
+```mathematica
+createData[mu_, class_, n_] :=  Table[{RandomVariate[MultinormalDistribution[mu, IdentityMatrix[2]]], class}, {i, 1, n}];
+data = {createData[{0, -2}, Red, 10], createData[{-2, 2}, Green, 10], createData[{2, 2}, Blue, 10]};
+unclassified = RandomReal[{-4, 4}, {100, 2}];
+```
+
+Defining Normal distrubution PDF formula, we use it to calculate probability.
+```mathematica
+normalDist[t_, std_, mean_] := 1/(Sqrt[2*Pi]*std)*E^-((t - mean)^2/(2*std^2));
+probability[point_, class_] := normalDist[First@point, StandardDeviation[class[[All, 1]]], Mean[class[[All, 1]]]]*normalDist[Last@point, StandardDeviation[class[[All, 2]]], Mean[class[[All, 2]]]];
+```
+
+Classifying data, sorting results according to probabilities and choosing most popular result.  
+Built-in method [NaiveBayes](http://reference.wolfram.com/language/ref/method/NaiveBayes.html)
+```mathematica
+classify[data_, point_] := Module[{},
+   {red, green, blue} = data;
+   pRed = {Red, probability[point, red[[All, 1]]]};
+   pGreen = {Green, probability[point, green[[All, 1]]]};
+   pBlue = {Blue, probability[point, blue[[All, 1]]]};
+   color = First@Last@SortBy[{pRed, pGreen, pBlue}, Last];
+   {point, color}
+   ];
+classified = Table[classify[data, unclassified[[i]]], {i, 1, Length@unclassified}];
+```
+
+![Image of NaiveBayes](/img/55.NaiveBayes.gif)
