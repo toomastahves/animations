@@ -122,7 +122,7 @@ classify[point_, data_, k_] := Module[{},
    ];
 ```
 
-Visualizing data. Using VoroinoiMesh to visualize boundaries.
+Visualizing data.
 ```mathematica
 visualizePoints[data_] := Table[{data[[i, 2]], PointSize[.02], Point[data[[i, 1]]]}, {i, 1, Length@data}];
 draw[data_] := Show[VoronoiMesh[data[[All, 1]], {{-5, 5}, {-5, 5}}, PlotTheme -> "Monochrome"], Graphics[visualizePoints[data]], ImageSize -> Large];

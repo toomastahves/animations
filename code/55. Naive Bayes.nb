@@ -1,1 +1,249 @@
-Notebook[{}]
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8334,        241]
+NotebookOptionsPosition[      7903,        225]
+NotebookOutlinePosition[      8251,        240]
+CellTagsIndexPosition[      8208,        237]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"unclassified", "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"50", ",", "2"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"blue", " ", "=", " ", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "5"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"20", ",", "2"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"green", " ", "=", 
+    RowBox[{"RandomReal", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "5"}], ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"20", ",", "2"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"normalDist", "[", 
+    RowBox[{"t_", ",", "std_", ",", "mean_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"1", "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Sqrt", "[", 
+        RowBox[{"2", "*", "Pi"}], "]"}], "*", "std"}], ")"}]}], "*", 
+    RowBox[{"E", "^", 
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"t", "-", "mean"}], ")"}], "^", "2"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"2", "*", 
+          RowBox[{"std", "^", "2"}]}], ")"}]}], ")"}]}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"decide", "[", "point_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"bMeanX", "=", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"blue", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"bStdX", "=", 
+        RowBox[{"StandardDeviation", "[", 
+         RowBox[{"blue", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"bMeanY", "=", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"blue", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"bStdY", "=", 
+        RowBox[{"StandardDeviation", "[", 
+         RowBox[{"blue", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"gMeanX", "=", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"green", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"gStdX", "=", 
+        RowBox[{"StandardDeviation", "[", 
+         RowBox[{"green", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"gMeanY", "=", 
+        RowBox[{"Mean", "[", 
+         RowBox[{"green", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"gStdY", "=", 
+        RowBox[{"StandardDeviation", "[", 
+         RowBox[{"green", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"b", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"normalDist", "[", 
+          RowBox[{
+           RowBox[{"First", "@", "point"}], ",", "bStdX", ",", "bMeanX"}], 
+          "]"}], "*", 
+         RowBox[{"normalDist", "[", 
+          RowBox[{
+           RowBox[{"Last", "@", "point"}], ",", "bStdY", ",", "bMeanY"}], 
+          "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"g", " ", "=", 
+        RowBox[{
+         RowBox[{"normalDist", "[", 
+          RowBox[{
+           RowBox[{"First", "@", "point"}], ",", "gStdX", ",", "gMeanX"}], 
+          "]"}], "*", 
+         RowBox[{"normalDist", "[", 
+          RowBox[{
+           RowBox[{"Last", "@", "point"}], ",", "gStdY", ",", "gMeanY"}], 
+          "]"}]}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"b", ">", "g"}], ",", "Blue", ",", "Green"}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"decide", "[", 
+   RowBox[{"unclassified", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.742783672876482*^9, 3.7427836730849457`*^9}, {
+   3.742813334237309*^9, 3.742813498474654*^9}, 3.742813651164425*^9, {
+   3.7428143182972455`*^9, 3.7428145080266285`*^9}, {3.742814602752492*^9, 
+   3.74281465150595*^9}, {3.742815683927931*^9, 3.7428157868503146`*^9}, {
+   3.742815846152211*^9, 3.7428158577281785`*^9}, {3.7428158933731823`*^9, 
+   3.742815910939167*^9}, {3.7428159639529147`*^9, 3.7428159645926533`*^9}, {
+   3.7428161240826826`*^9, 3.7428162905854983`*^9}, {3.7428163739460764`*^9, 
+   3.742816493803347*^9}, {3.7428175318077145`*^9, 3.742817644903722*^9}, 
+   3.7428179776958227`*^9, {3.7428180701440206`*^9, 3.7428181904000597`*^9}, {
+   3.742818230193921*^9, 
+   3.742818231279708*^9}},ExpressionUUID->"15a4dec0-e704-472f-b3ee-\
+257f2d52e86c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  ButtonBox[
+   TooltipBox[
+    GraphicsBox[{
+      {GrayLevel[0], RectangleBox[{0, 0}]}, 
+      {GrayLevel[0], RectangleBox[{1, -1}]}, 
+      {RGBColor[0, 1, 0], RectangleBox[{0, -1}, {2, 1}]}},
+     AspectRatio->1,
+     DefaultBaseStyle->"ColorSwatchGraphics",
+     Frame->True,
+     FrameStyle->RGBColor[0., 0.6666666666666666, 0.],
+     FrameTicks->None,
+     ImageSize->
+      Dynamic[{Automatic, 1.35 CurrentValue["FontCapHeight"]/
+        AbsoluteCurrentValue[Magnification]}],
+     PlotRangePadding->None,
+     ImageCache->GraphicsData["CompressedBitmap", "\<\
+eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIOwAgOI/R/IhBLc
+DP//A1lc/xlWMTBC2AzMIM5/KGRgA5GMI0oeREPUrGJgYEeWYgQA49mCzg==
+\
+\>"]],
+    "RGBColor[0, 1, 0]"],
+   Appearance->None,
+   BaseStyle->{},
+   BaselinePosition->Baseline,
+   ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+     If[
+      Not[
+       AbsoluteCurrentValue["Deployed"]], 
+      SelectionMove[Typeset`box$, All, Expression]; 
+      FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+      FrontEnd`Private`$ColorSelectorInitialColor = RGBColor[0, 1, 0]; 
+      FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+      MathLink`CallFrontEnd[
+        FrontEnd`AttachCell[Typeset`box$, 
+         FrontEndResource["RGBColorValueSelector"], {0, {Left, Bottom}}, {
+         Left, Top}, 
+         "ClosingActions" -> {
+          "SelectionDeparture", "ParentChanged", "EvaluatorQuit"}]]]],
+   DefaultBaseStyle->{},
+   Evaluator->Automatic,
+   Method->"Preemptive"],
+  RGBColor[0, 1, 0],
+  Editable->False,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.7428181671586514`*^9, 3.742818168727799*^9}, 
+   3.7428182328392196`*^9},ExpressionUUID->"5794afba-6c9f-454c-96c6-\
+b1adfda94a32"]
+}, Open  ]]
+},
+WindowSize->{982, 872},
+WindowMargins->{{Automatic, 75}, {103, Automatic}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 5540, 150, 542, "Input",ExpressionUUID->"15a4dec0-e704-472f-b3ee-257f2d52e86c"],
+Cell[6123, 174, 1764, 48, 32, "Output",ExpressionUUID->"5794afba-6c9f-454c-96c6-b1adfda94a32"]
+}, Open  ]]
+}
+]
+*)
+

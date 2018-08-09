@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9303,        255]
-NotebookOptionsPosition[      8999,        242]
-NotebookOutlinePosition[      9349,        257]
-CellTagsIndexPosition[      9306,        254]
+NotebookDataLength[      9318,        255]
+NotebookOptionsPosition[      9014,        242]
+NotebookOutlinePosition[      9364,        257]
+CellTagsIndexPosition[      9321,        254]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -125,20 +125,19 @@ Cell[BoxData[{
     RowBox[{"draw", "[", "data_", "]"}], ":=", 
     RowBox[{"Show", "[", 
      RowBox[{
-      RowBox[{"VoronoiMesh", "[", 
-       RowBox[{
-        RowBox[{"data", "[", 
-         RowBox[{"[", 
-          RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{",", 
         RowBox[{"{", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"-", "5"}], ",", "5"}], "}"}]}], "}"}], ",", 
-        RowBox[{"PlotTheme", "->", "\"\<Monochrome\>\""}]}], "]"}], ",", 
+         RowBox[{"t", ",", "0", ",", "2"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "5"}], ",", "5"}], "}"}]}], "}"}]}]}], "]"}], ",", 
       RowBox[{"Graphics", "[", 
        RowBox[{"visualizePoints", "[", "data", "]"}], "]"}], ",", 
       RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ";"}], 
@@ -237,7 +236,8 @@ Cell[BoxData[{
    3.742738831036761*^9, 3.7427388669830427`*^9}, {3.742738906046387*^9, 
    3.742738912590393*^9}, 3.742738953337574*^9, {3.742738987871628*^9, 
    3.7427389911291704`*^9}, {3.742739032415197*^9, 3.742739033018032*^9}, 
-   3.742739457738312*^9},ExpressionUUID->"a1f841d5-6b65-42fc-8735-\
+   3.742739457738312*^9, {3.7428093353952274`*^9, 
+   3.742809389307313*^9}},ExpressionUUID->"a1f841d5-6b65-42fc-8735-\
 a6e2ec638834"]
 },
 WindowSize->{1172, 872},
@@ -256,7 +256,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 8437, 220, 447, "Input",ExpressionUUID->"a1f841d5-6b65-42fc-8735-a6e2ec638834"]
+Cell[558, 20, 8452, 220, 447, "Input",ExpressionUUID->"a1f841d5-6b65-42fc-8735-a6e2ec638834"]
 }
 ]
 *)
