@@ -166,3 +166,46 @@ classified = Table[classify[data, unclassified[[i]]], {i, 1, Length@unclassified
 ```
 
 ![Image of NaiveBayes](/img/55.NaiveBayes.gif)
+
+### 56. Gradient Descent [Wikipedia](https://en.wikipedia.org/wiki/Gradient_descent)
+
+Simulating data. Generating points with normally distributed noise. Original slope a = 3 and intercept b = -10.
+```matlab
+function [X, Y] = generate_data(N)
+    % Generate 2D linear dataset
+    X = 2 * 2 * randn(N, 1);
+    Y = 3 * X - 10 + randn(N, 1);
+end
+```
+
+Single step calculates and minimizes error function
+```matlab
+function [slope, intercept] = gd_step(X, Y, slope, intercept, rate)
+    N = size(Y, 1);
+    % Y-hat = predicted Y
+    Y_hat = slope * X + intercept;
+    % Error function to be minimized
+    error = (Y - Y_hat);
+    % Derivatives
+    D_slope = (-2/N) * sum(X .* error);
+    D_intercept = (-2/N) * sum(error);
+    % Calculating new values
+    slope = slope - rate * D_slope;
+    intercept = intercept - rate * D_intercept;
+end
+```
+
+Iterating until max_step is reached. Saving slope and intercept for animation.
+```matlab
+function [history_slope, history_intercept, history_cost] = gradient_descent(X, Y, max_steps, rate)
+    % Calculating slope, intercept and cost on each step
+    for i=1:max_steps
+        history_slope(i,:) = current_slope;
+        history_intercept(i,:) = current_intercept;
+        history_cost(i,:) = sum((Y - (current_slope * X + current_intercept)).^2) / size(Y, 1);
+        [current_slope, current_intercept] = gd_step(X, Y, current_slope, current_intercept, rate);
+    end
+end
+```
+
+![Image of NaiveBayes](/img/56.GradientDescent.gif)
