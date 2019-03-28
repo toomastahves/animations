@@ -208,4 +208,53 @@ function [history_slope, history_intercept, history_cost] = gradient_descent(X, 
 end
 ```
 
-![Image of NaiveBayes](/img/56.GradientDescent.gif)
+![Image of GradientDescent](/img/56.GradientDescent.gif)
+
+### 57. Stepwise Regression [Wikipedia](https://en.wikipedia.org/wiki/Stepwise_regression)
+
+Simulating data. Generating 3D points with significant noise. Original slope a1 = 1 and a2 = 5.
+```matlab
+function [X, Y] = generate_data(N)
+    % Generate 3D linear dataset
+    X1 = 0.5 * randn(N, 1);
+    X2 = 0.5 * randn(N, 1);
+    Y = 1 * X1 + 5 * X2 + randn(N, 1);
+    % Add significant noise
+    X1 = [X1; -10 + 20*rand(20,1)];
+    X2 = [X2; -10 + 20*rand(20,1)];
+    Y = [Y; -10 + 20*rand(20,1)];
+end
+```
+
+Defining stepwise regression running function. Running F-test on data to remove points with significant variance. Using mean squares method to calculate parameters. Using R^2 to validate model and if model not good enough then going for next iteration.
+```matlab
+% Stepwise regression
+function [R_squared_performance, X, Y, slope, intercept, slope_history, intercept_history] = stepwise_regression(X, Y, iterations, R_squared_limit, alpha)
+    for i=1:iterations
+        % F-test
+        [idx] = f_test(X, Y, alpha);
+        % Selecting passed test points
+        X = X(idx == 0,:);
+        Y = Y(idx == 0,:);
+        % Calculating R^2
+        [slope, intercept] = mean_squares(X, Y);
+        R_squared = R_squared_custom(X, Y, slope, intercept);
+        % Used for animation
+        slope_history(i,:) = slope;
+        intercept_history(i,:) = intercept;
+        % Used for tracking learning rate
+        R_squared_performance(i,:) = [i, R_squared];
+        % Loop end condition
+        if R_squared > R_squared_limit
+            break
+        end
+    end
+end
+```
+
+Running implemented stepwise model builder with initial parameters: max_iterations = 20, minimum R^2 value = 0.96 and alpha = 0.02.
+```matlab
+[R_squared_performance, ~, ~, slope, intercept, history_slope, history_intercept] = stepwise_regression(X, Y, 20, 0.95, 0.02);
+```
+
+![Image of StepwiseRegression](/img/57.StepwiseRegression.gif)
