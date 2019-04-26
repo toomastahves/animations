@@ -252,14 +252,14 @@ function [R_squared_performance, X, Y, slope, intercept, slope_history, intercep
 end
 ```
 
-Running implemented stepwise model builder with initial parameters: max_iterations = 20, minimum R^2 value = 0.96 and alpha = 0.02.
+Running implemented stepwise model builder with initial parameters: max_iterations = 20, minimum R^2 value = 0.95 and alpha = 0.02.
 ```matlab
 [R_squared_performance, ~, ~, slope, intercept, history_slope, history_intercept] = stepwise_regression(X, Y, 20, 0.95, 0.02);
 ```
 
 ![Image of StepwiseRegression](/img/57.StepwiseRegression.gif)
 
-### 58. Gradient boosting [Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting) [Tutorial]https://medium.com/mlreview/gradient-boosting-from-scratch-1e317ae4587d
+### 58. Gradient boosting [Wikipedia](https://en.wikipedia.org/wiki/Gradient_boosting) [Tutorial](https://medium.com/mlreview/gradient-boosting-from-scratch-1e317ae4587d)
 
 Defining function for gradient boosting. Using decision stumps as weak models.
 ```matlab
